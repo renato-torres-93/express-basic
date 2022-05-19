@@ -4,6 +4,14 @@ const port = 3000
 
 app.get ('/', (req, res) => res.send ('I\'m not a teapot.'))
 
+app.get ('/user', (req, res) =>
+{
+  res.json ([{
+    id: 1,
+    name: 'Stock Manager'
+  }])
+})
+
 app.get ('/products', (req, res) =>
 {
   const products = [
