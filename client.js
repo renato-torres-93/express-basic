@@ -4,7 +4,7 @@ http.get ({
   port: 3000,
   hostname: 'localhost',
   path: '/user',
-  headers: {}
+  headers: {authorization: 'pass'}
 }, (res) =>
 {
   console.log ('Connected.')

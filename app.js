@@ -2,9 +2,22 @@ const express = require ('express')
 const app = express ()
 const port = 3000
 
+function isAuthorized (req, res, next)
+{
+  const auth = req.headers.authorization
+
+  if (auth === 'pass')
+    next ()
+  else
+  {
+    res.status (401)
+    res.send ('Unauthorized.')
+  }
+}
+
 app.get ('/', (req, res) => res.send ('I\'m not a teapot.'))
 
-app.get ('/user', (req, res) =>
+app.get ('/user', isAuthorized, (req, res) =>
 {
   res.json ([{
     id: 1,
